@@ -1,0 +1,13 @@
+﻿@model TestViewModel
+
+<form>
+    <h3>This date picker WILL have data- attributes</h3>
+    @Html.LabelFor(m => m.DateOfBirth)
+    @Html.EditorFor(m => m.DateOfBirth)
+
+    <br />
+
+    @Html.Partial("_TestPartial", Model)
+
+</form>
+
