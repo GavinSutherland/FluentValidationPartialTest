@@ -1,7 +1,15 @@
 ﻿@model TestViewModel
 
-<h3>This date picker in a partial WILL NOT have data- attributes</h3>
+<h3>This DOESN'T have data- attributes</h3>
 @Html.LabelFor(m => m.DateOfBirth)
-@Html.EditorFor(m => m.DateOfBirth)
+@(Html.Kendo().DatePickerFor(m => m.DateOfBirth).Deferred())
+
+<br />
+
+<h3>This DOES have data- attributes</h3>
+@Html.LabelFor(m => m.AnotherDate)
+@Html.EditorFor(m => m.AnotherDate)
+
+
 
 

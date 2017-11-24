@@ -13,6 +13,10 @@ namespace FluentValidationPartialTest.Web.Models
             RuleFor(vm => vm.DateOfBirth)
                 .NotEmpty()
                 .WithMessage("THIS IS NEEDED");
+
+            RuleFor(vm => vm.AnotherDate)
+                .NotEmpty()
+                .WithMessage("THIS IS ALSO NEEDED");
         }
     }
 }

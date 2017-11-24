@@ -10,5 +10,8 @@ namespace FluentValidationPartialTest.Web.Models
     {
         [Display(Name="Date of Birth")]
         public DateTime? DateOfBirth { get; set; }
+
+        [Display(Name = "Another Date")]
+        public DateTime? AnotherDate { get; set; }
     }
 }

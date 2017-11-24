@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using FluentValidationPartialTest.Web.Models;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Serialization;
 
 namespace FluentValidationPartialTest.Web
 {
@@ -26,10 +27,13 @@ namespace FluentValidationPartialTest.Web
         {
             services
                 .AddMvc()
-                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<TestViewModelValidator>())
-                ;
+                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<TestViewModelValidator>());
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // Add Kendo UI services to the services container
+            services.AddKendo();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +57,9 @@ namespace FluentValidationPartialTest.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Configure Kendo UI
+            app.UseKendo(env);
         }
     }
 }

@@ -37,7 +37,11 @@ namespace FluentValidationPartialTest.Web.Controllers
         [HttpGet]
         public ActionResult Test()
         {
-            var vm = new TestViewModel() { DateOfBirth = new DateTime(1950, 1, 1) };
+            var vm = new TestViewModel()
+            {
+                DateOfBirth = new DateTime(1950, 1, 1),
+                AnotherDate = new DateTime(1950, 1, 1)
+            };
             return View(vm);
         }
     }
